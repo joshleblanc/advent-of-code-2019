@@ -15,9 +15,29 @@ OneTest >> setUp [
 ]
 
 { #category : #tests }
-OneTest >> testA [
-	self assert: (one a: #(12)) equals: 2.
-	self assert: (one a: #(14)) equals: 2.
-	self assert: (one a: #(1969)) equals: 654.
+OneTest >> test100756 [
 	self assert: (one a: #(100756)) equals: 33583.
+]
+
+{ #category : #tests }
+OneTest >> test12 [
+	self assert: (one a: #(12)) equals: 2.
+
+]
+
+{ #category : #tests }
+OneTest >> test14 [
+	self assert: (one a: #(14)) equals: 2.
+]
+
+{ #category : #tests }
+OneTest >> test1969 [
+	self assert: (one a: #(1969)) equals: 654.
+]
+
+{ #category : #tests }
+OneTest >> testInput [
+	|lines|
+	lines := Helpers lines: 'one.input'.
+	self assert: (one a: lines) equals: 3398090.
 ]

@@ -22,7 +22,7 @@ Helpers class >> csv: file [
 
 { #category : #accessing }
 Helpers class >> lines: file [
-	^self readFile: file lines.
+	^(self readFile: file) lines.
 ]
 
 { #category : #'as yet unclassified' }

@@ -37,7 +37,7 @@ One >> b [
 
 { #category : #'as yet unclassified' }
 One >> fuel: mass [
-	^((mass / 3) floor) - 2.
+	^((mass asNumber / 3) floor) - 2.
 ]
 
 { #category : #accessing }
