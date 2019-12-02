@@ -13,7 +13,7 @@ Public API and Key Messages
 Class {
 	#name : #One,
 	#superclass : #Object,
-	#category : #AdventOfCode2019
+	#category : #'AdventOfCode2019-Solutions'
 }
 
 { #category : #'accessing structure variables' }

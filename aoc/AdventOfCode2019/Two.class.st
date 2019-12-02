@@ -13,5 +13,5 @@ Public API and Key Messages
 Class {
 	#name : #Two,
 	#superclass : #Object,
-	#category : #AdventOfCode2019
+	#category : #'AdventOfCode2019-Solutions'
 }

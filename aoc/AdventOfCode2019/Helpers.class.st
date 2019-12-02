@@ -12,7 +12,7 @@ Public API and Key Messages
 Class {
 	#name : #Helpers,
 	#superclass : #Object,
-	#category : #AdventOfCode2019
+	#category : #'AdventOfCode2019-Libraries'
 }
 
 { #category : #'as yet unclassified' }
