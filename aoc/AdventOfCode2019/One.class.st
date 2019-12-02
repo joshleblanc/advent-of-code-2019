@@ -1,3 +1,15 @@
+"
+Solution to question one of advent of code 2019.
+
+Public API and Key Messages
+
+- a   
+- b 
+
+   |one|
+	one := One new.
+	Transcript show: one a; cr.
+"
 Class {
 	#name : #One,
 	#superclass : #Object,
