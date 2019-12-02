@@ -17,8 +17,8 @@ Class {
 }
 
 { #category : #'accessing structure variables' }
-One >> a [
-	^ (Helpers lines: 'one.input') inject: 0 into: [ :sum :each | sum + (self fuel: each) ].
+One >> a: lines [
+	^ lines inject: 0 into: [ :sum :each | sum + (self fuel: each) ].
 ]
 
 { #category : #'accessing structure variables' }
