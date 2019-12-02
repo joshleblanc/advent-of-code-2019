@@ -6,13 +6,13 @@ Class {
 
 { #category : #'accessing structure variables' }
 One >> a [
-	^ self lines inject: 0 into: [ :sum :each | sum + (self fuel: each) ].
+	^ (Helpers lines: 'one.input') inject: 0 into: [ :sum :each | sum + (self fuel: each) ].
 ]
 
 { #category : #'accessing structure variables' }
 One >> b [
 	|fuel innerSum|
-	^ self lines inject: 0 into: [ :sum :each |
+	^ (Helpers lines: 'one.input') inject: 0 into: [ :sum :each |
 			fuel := (self fuel: each).
 			innerSum := 0.
 			[ fuel <= 0 ] whileFalse: [
