@@ -37,9 +37,20 @@ TwoA >> get: i [
 	^values at: tmp + 1.
 ]
 
+{ #category : #initialization }
+TwoA >> index: v [
+	index := v.
+]
+
 { #category : #accessing }
 TwoA >> next [
 	index := index + 4.
+]
+
+{ #category : #initialization }
+TwoA >> noun: noun [
+	values at: 2 put: noun.
+	
 ]
 
 { #category : #'as yet unclassified' }
@@ -49,14 +60,18 @@ TwoA >> opCode [
 ]
 
 { #category : #'as yet unclassified' }
+TwoA >> output [
+	^ values at: 1.
+]
+
+{ #category : #'as yet unclassified' }
 TwoA >> pos [
 	^(values at: index + 4) + 1
 ]
 
 { #category : #'as yet unclassified' }
 TwoA >> programAlarm. [
-	values at: 2 put: 12.
-	values at: 3 put: 2.
+	self noun: 12; verb: 2.
 ]
 
 { #category : #running }
@@ -75,11 +90,12 @@ TwoA >> run [
 ]
 
 { #category : #initialization }
-TwoA >> setIndex: v [
-	index := v.
+TwoA >> values: string [
+	values := ((Helpers csv: string) collect: [ :v | v asNumber ]).
 ]
 
 { #category : #initialization }
-TwoA >> setValues: string [
-	values := ((Helpers csv: string) collect: [ :v | v asNumber ]).
+TwoA >> verb: verb [
+	values at: 3 put: verb.
+	
 ]
