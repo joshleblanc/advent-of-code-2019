@@ -53,6 +53,12 @@ TwoA >> pos [
 	^(values at: index + 4) + 1
 ]
 
+{ #category : #'as yet unclassified' }
+TwoA >> programAlarm. [
+	values at: 2 put: 12.
+	values at: 3 put: 2.
+]
+
 { #category : #running }
 TwoA >> run [
 	index := 0.
