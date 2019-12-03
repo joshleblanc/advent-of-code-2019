@@ -15,7 +15,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'values',
-		'index'
+		'index',
+		'originalValues'
 	],
 	#category : #'AdventOfCode2019-Solutions'
 }
@@ -47,6 +48,11 @@ TwoA >> next [
 	index := index + 4.
 ]
 
+{ #category : #'as yet unclassified' }
+TwoA >> noun [
+	^ values at: 2.
+]
+
 { #category : #initialization }
 TwoA >> noun: noun [
 	values at: 2 put: noun.
@@ -74,6 +80,11 @@ TwoA >> programAlarm. [
 	self noun: 12; verb: 2.
 ]
 
+{ #category : #initialization }
+TwoA >> reset [
+	values := originalValues copy.
+]
+
 { #category : #running }
 TwoA >> run [
 	index := 0.
@@ -91,7 +102,15 @@ TwoA >> run [
 
 { #category : #initialization }
 TwoA >> values: string [
-	values := ((Helpers csv: string) collect: [ :v | v asNumber ]).
+	|valueCollection|
+	valueCollection := ((Helpers csv: string) collect: [ :v | v asNumber ]).
+	originalValues := valueCollection copy.
+	values := valueCollection copy.
+]
+
+{ #category : #'as yet unclassified' }
+TwoA >> verb [
+	values at: 3.
 ]
 
 { #category : #initialization }
