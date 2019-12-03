@@ -16,8 +16,8 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-Helpers class >> csv: file [
-	^(self readFile: file) split: ','.
+Helpers class >> csv: str [
+	^str splitOn: ','.
 ]
 
 { #category : #accessing }
