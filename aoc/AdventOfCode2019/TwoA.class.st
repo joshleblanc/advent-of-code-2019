@@ -110,7 +110,7 @@ TwoA >> values: string [
 
 { #category : #'as yet unclassified' }
 TwoA >> verb [
-	values at: 3.
+	^values at: 3.
 ]
 
 { #category : #initialization }

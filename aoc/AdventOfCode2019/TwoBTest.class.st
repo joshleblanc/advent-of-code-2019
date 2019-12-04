@@ -13,6 +13,7 @@ TwoBTest >> testInput [
 	values := Helpers readFile: 'two.input'.
 	two := TwoB new.
 	two values: values; findOutput: 19690720.
-	self assert: (two noun) equals: 0.
-	self assert: (two verb) equals: 0.
+	Transcript show: (two noun); show: (two verb).
+	self assert: (two noun) equals: 80.
+	self assert: (two verb) equals: 51.
 ]
