@@ -62,10 +62,7 @@ ThreeA >> intersections [
 		do: [ :baseLine | 
 			copy removeAt: 1.
 			copy
-				do: [ :targetLine | 
-					baseLine
-						do: [ :point | 
-							(targetLine includes: point)
-								ifTrue: [ intersections add: point ] ] ] ].
+				do:
+					[ :targetLine | intersections := intersections , baseLine intersection: targetLine ] ].
 	^ intersections
 ]
