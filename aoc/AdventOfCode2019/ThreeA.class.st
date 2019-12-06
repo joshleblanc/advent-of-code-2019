@@ -9,22 +9,27 @@ Class {
 
 { #category : #accessing }
 ThreeA >> addLine: in [
-	|values x y|
+	| values x y points |
 	x := 0.
 	y := 0.
 	values := Helpers csv: in.
-	values := values collect: [ :value | 
-		|dir num|
-		dir := value first.
-		num := value allButFirst asNumber.
-		dir = $R ifTrue: [ x := x + num ].
-		dir = $L ifTrue: [ x := x - num ].
-		dir = $U ifTrue: [ y := y - num ].
-		dir = $D ifTrue: [ y := y + num ].
-		x@y.
-	].
-	values := values overlappingPairsCollect: [ :a :b | LineSegment from: a to: b ].
-	lines add: values.
+	points := OrderedCollection new.
+	values := values
+		collect: [ :value | 
+			| dir num |
+			dir := value first.
+			num := value allButFirst asNumber.
+			num
+				timesRepeat: [ dir = $R
+						ifTrue: [ x := x + 1 ].
+					dir = $L
+						ifTrue: [ x := x - 1 ].
+					dir = $U
+						ifTrue: [ y := y + 1 ].
+					dir = $D
+						ifTrue: [ y := y - 1 ].
+					points add: x @ y ] ].
+	lines add: points.
 ]
 
 { #category : #accessing }
@@ -32,15 +37,15 @@ ThreeA >> findDistanceToClosestIntersection [
 	| dist |
 	dist := nil.
 	self intersections
-		do: [ :intersection |
-			|abs|
-			abs := intersection abs. 
+		do: [ :intersection | 
+			| abs |
+			abs := intersection abs.
 			dist isNil
 				ifTrue: [ dist := abs x + abs y ]
 				ifFalse: [ | tmp |
 					tmp := abs x + abs y.
 					dist := dist min: tmp ] ].
-	^dist.
+	^ dist
 ]
 
 { #category : #initialization }
@@ -50,20 +55,17 @@ ThreeA >> initialize [
 
 { #category : #'as yet unclassified' }
 ThreeA >> intersections [
-	|copy intersections|
+	| copy intersections |
 	intersections := OrderedCollection new.
 	copy := lines copy.
-	lines do: [ :baseLine | 
-		copy removeAt: 1. 
-		baseLine do: [ :baseLineSegment |
-			copy do: [ :targetLine | 
-				targetLine do: [ :targetLineSegment | 
-					|intersection|
-					intersection := baseLineSegment intersectionWith: targetLineSegment.
-					intersection isNil ifFalse: [ intersections add: intersection ].
-				]	
-			]
-		].
-	].
-	^ intersections.
+	lines
+		do: [ :baseLine | 
+			copy removeAt: 1.
+			copy
+				do: [ :targetLine | 
+					baseLine
+						do: [ :point | 
+							(targetLine includes: point)
+								ifTrue: [ intersections add: point ] ] ] ].
+	^ intersections
 ]
