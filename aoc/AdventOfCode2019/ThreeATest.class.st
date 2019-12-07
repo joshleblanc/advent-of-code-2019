@@ -42,5 +42,5 @@ ThreeATest >> testInput [
 	lines do: [ :line | three addLine: line ].
 	
 	ans := three findDistanceToClosestIntersection. 
-	self assert: ans equals: 135.
+	self assert: ans equals: 303.
 ]
