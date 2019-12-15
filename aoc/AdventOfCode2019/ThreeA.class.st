@@ -48,6 +48,25 @@ ThreeA >> findDistanceToClosestIntersection [
 	^ dist
 ]
 
+{ #category : #'as yet unclassified' }
+ThreeA >> findFewestStepsToReachIntersection [
+	| min |
+	min := nil.
+	self intersections
+		do: [ :intersection | 
+			| count |
+			count := 0.
+			lines
+				do: [ :line | 
+					| index |
+					index := line indexOf: intersection.
+					count := count + index ].
+			min := min isNil
+				ifTrue: [ count ]
+				ifFalse: [ count min: min ] ].
+	^ min
+]
+
 { #category : #initialization }
 ThreeA >> initialize [
 	lines := OrderedCollection new.
